@@ -42,8 +42,8 @@ jobs:
         run: mvn --batch-mode test -D cucumber.filter.tags="@payment"
 
   publish-image:
-    needs: [test-ordering, test-payment]
     runs-on: ubuntu-latest
+    needs: [test-ordering, test-payment]
     - name: Log in to Docker Hub
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
