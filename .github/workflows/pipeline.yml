@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
 
-  compile:
+  compile-jar:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Received ${{ github.event_name }} event."
@@ -23,7 +23,7 @@ jobs:
           path: target/re21-SHADED.jar
 
   test-ordering:
-    needs: describe-context
+    needs: compile-jar
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -37,7 +37,7 @@ jobs:
         run: mvn --batch-mode test -D cucumber.filter.tags="@ordering"
 
   test-payment:
-    needs: describe-context
+    needs: compile-jar
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -75,6 +75,7 @@ jobs:
           tags: acedesign/re21
 
   deploy-app:
+    needs: publish-image
     runs-on: ubuntu-latest
     steps:
       - name: Restore the jar with dependecies
