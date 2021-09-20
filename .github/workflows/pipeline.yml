@@ -20,7 +20,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: app
-          path: target/re21-SHADED.jar
+          path: target/re-21-SHADED.jar
 
   test-ordering:
     needs: compile-jar
