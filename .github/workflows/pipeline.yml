@@ -60,6 +60,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: app
+          path: target/re-21-SHADED.jar
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
@@ -84,6 +85,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: app
+          path: target/re-21-SHADED.jar
       - name: Build, Push and Release a Docker container to Heroku.
         uses: gonuit/heroku-docker-deploy@v1.3.3 
         with:
