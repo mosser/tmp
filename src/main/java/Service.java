@@ -6,6 +6,7 @@ import java.util.List;
 public class Service extends Jooby {
 
     {
+   
         get("/", ctx -> "Welcome to our drink ordering system");
         get("/orders", ctx -> { return getAllOrders();});
         get("/orders/{owner}/{recipient}/{drink}", (ctx) -> {
