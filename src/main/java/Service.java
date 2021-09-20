@@ -7,7 +7,9 @@ import java.util.List;
 public class Service extends Jooby {
 
     {
-        setServerOptions(new ServerOptions().setPort(80));
+        setServerOptions(new ServerOptions()
+                .setPort(Integer.parseInt(System.getenv("PORT"))));
+                
         get("/", ctx -> "Welcome to our drink ordering system");
         get("/orders", ctx -> { return getAllOrders();});
         get("/orders/{owner}/{recipient}/{drink}", (ctx) -> {
